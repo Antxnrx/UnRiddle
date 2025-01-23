@@ -3,12 +3,136 @@
     padding: 0;
 }
 
-body{
+@font-face {
+    font-family: font;
+    src: url('./fonts/Magic\ Bubble.ttf');
+}
 
+@font-face {
+    font-family: font2;
+    src: url('./fonts/Baby\ Bloom\ -\ Personal\ Use.otf');
+}
+
+body{
+    background-image: url('./assets/BG-Hackathon\ final.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    justify-content: center;
+    display: flex;               /* Enables Grid Layout */
+    place-items: center; 
+    align-items: center;
+    height: 100vh; 
+
+    margin: 0;
 }
 
 #login-main{
-    width: 30%;
-    height: %;
+    position: relative;
+    width: 460px;
+    height: 100%;
+    background-color: rgb(255, 254, 254);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px 50px 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-txt{
+    color: rgb(255, 0, 0);
+    font-size: 3em;
+    margin: 20px;
+    font-family: font2;
+}
+
+.info-txt{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 50px;
+    margin-bottom: 40px;
+}
+
+.username, .password{
+    display: flex;
+    flex-direction: column;
+    font-size: 26px;
+    width: 390px;
+    font-family: font;
+    color: #5CB338;
+}
+input{
+    font-size: 18px;
+    width: 100%;
+    margin: 5px;
+    border: 1px solid rgb(0, 119, 255);
+    padding: 5px;
+
+}
+.login, .signup{
+    padding: 10px 20px;
+    font-size: 25px;
+    background-color: #FB4141;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: font2;
+}
+
+ .signup:hover{
+    background-color: rgb(124, 88, 88);
+    color: rgb(236, 175, 221);
+}
+
+.login:hover{
+    background-color: rgb(124, 88, 88);
+    color: rgb(236, 175, 221);
+}
+
+.signup{
+    text-decoration: none;
+}
+
+.hiro{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    grid-gap: 90px;
+
+}
+
+/* .image1{
+    position: absolute;
+
+} */
+
+.image1 {
+    position: absolute;    /* Absolute positioning within the parent container */
+    top: 50%;             /* Center the image vertically relative to #login-main */
+    left: 98%;           /* Position the image exactly outside the right edge */
+    transform: translateY(-60%); /* Adjust for perfect vertical centering */
+    width: 100px;         /* Set a width for the image container */
+    height: auto;         /* Maintain aspect ratio */
+}
+
+.image1 img {
+         
+    height: auto;         /* Maintain the aspect ratio */
+}
+
+.hook{
+    width: 50px;
+    height: 50px;
+    margin: 70px;
+    border-radius: 50%;
     background-color: black;
+}
+.parent-hook{
+    display: flex;
+    align-items: center;
+    width: 460px;
 }

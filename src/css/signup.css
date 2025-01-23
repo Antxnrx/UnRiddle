@@ -1,0 +1,190 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: font;
+    src: url('./fonts/Magic\ Bubble.ttf');
+}
+
+@font-face {
+    font-family: font2;
+    src: url('./fonts/Baby\ Bloom\ -\ Personal\ Use.otf');
+}
+
+body{
+    background-image: url('./assets/BG-Hackathon\ final.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    width: 100%;
+    justify-content: center;
+    display: flex;               /* Enables Grid Layout */
+    place-items: center; 
+    align-items: center;
+    height: 100vh; 
+
+    margin: 0;
+}
+
+#login-main{
+    position: relative;
+    width: 460px;
+    height: 100%;
+    background-color: rgb(255, 254, 254);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px 0px 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-txt{
+    color: rgb(255, 0, 0);
+    font-size: 3em;
+    margin: 20px;
+    font-family: font2;
+}
+
+.info-txt{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 50px;
+    margin-bottom: 40px;
+}
+
+.username, .password{
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    
+}
+input{
+    font-size: 18px;
+    width: 100%;
+    margin: 5px;
+    border: 1px solid rgb(0, 119, 255);
+    padding: 5px;
+
+}
+.login, .signup{
+    padding: 10px 20px;
+    font-size: 25px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: font2;
+}
+.signup{
+    text-decoration: none;
+}
+
+.hiro{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    grid-gap: 90px;
+
+}
+
+/* .image1{
+    position: absolute;
+
+} */
+
+.image1 {
+    position: absolute;    /* Absolute positioning within the parent container */
+    top: 50%;             /* Center the image vertically relative to #login-main */
+    left: 98%;           /* Position the image exactly outside the right edge */
+    transform: translateY(-60%); /* Adjust for perfect vertical centering */
+    width: 100px;         /* Set a width for the image container */
+    height: auto;         /* Maintain aspect ratio */
+}
+
+.image1 img {
+         
+    height: auto;         /* Maintain the aspect ratio */
+}
+
+.hook{
+    width: 50px;
+    height: 50px;
+    margin: 70px;
+    border-radius: 50%;
+    background-color: black;
+}
+.parent-hook{
+    display: flex;
+    align-items: center;
+    width: 460px;
+}
+
+
+.gender-container {
+    font-family: 'Arial', sans-serif;
+    /* margin: 20px; */
+    max-width: 300px;
+  }
+  
+  /* .gender-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+   */
+  .gender-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #0011ff;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    appearance: none; /* Removes default arrow for custom styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .gender-container select:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+  }
+  
+  .gender-container select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .gender-container select:disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  /* Add a custom arrow */
+  .gender-container select {
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+  }
+  
+  .label{
+    font-size: 26px;
+    font-family: font;
+    color: green;
+  }
+
+
+  .dob{
+    margin-bottom: 50px;
+  }
