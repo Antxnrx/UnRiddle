@@ -1,70 +1,68 @@
 <!--all rights reserved-->
 <link rel="stylesheet" href="white.css">
 <main id="userActions">
-    <!--Board, canvas, drawing magic-->
-  
-    <section>
-      <div id="pdf">
-        <div id="default" class="data">
-          <div class="drawing-board">
-            <canvas id="drawing-board"></canvas>
-          </div>
+  <div class="nav-bar">
+    <div class="logo">
+        <img class="logo-1" src="./assets/logo (1).png" alt="logo">
+    </div>
+  </div>
+
+  <!--Board, canvas, drawing magic-->
+  <section>
+    <div id="pdf">
+      <div id="default" class="data">
+        <div class="drawing-board">
+          <canvas id="drawing-board"></canvas>
         </div>
       </div>
-    </section>
-  
-    <!--Tool bar, all menu buttons-->
-  
-    <section class="container">
-      <div id="toolbar">
-        <label for="paper.io">
-          <button class="button dropdown">
-            stroke
-            <div class="dropdown-content">
-              width
-              <input id="lineWidth" name="lineWidth" value="1" />
-              opacity
-              <input id="opacity" name="opacity" value="1" />
-              color
-              <input id="stroke" name="stroke" type="color" />
-            </div>
-          </button>
-          <button id="clear" class="button">Clear</button>
-          <button id="export-pdf" class="button dropdown">
-            Export As
-            <div class="dropdown-content">
-              <a id="png">png</a>
-              <a id="jpeg">jpeg</a>
-            </div>
-          </button>
-          <button class="button dropdown">
-            change paper
-            <div class="dropdown-content">
-              <a id="squares">squares</a>
-              <a id="squares2">squares2</a>
-              <a id="v-lined">lines</a>
-              <a id="h-lined">lines2</a>
-              <a id="doted">dots</a>
-              <a id="blank">blank</a>
-              <a id="old">old</a>
-            </div>
-          </button>
-          <!-- <button class="record-btn button icon-c">
-            record
-          </button>
-          <div id="recording" class="icon red"></div> -->
-        </label>
-      </div>
-    </section>
-  
-    <!--responsible for downloading vide after record-->
-  
-    <video class="video"></video>
-  
-    <!--drag & drop image-->
-  
-    <div class="wrapper">
-      <img id="imgPrime" src="" />
     </div>
-  </main>
-  <script src="white.js"></script>
+  </section>
+
+  <!--Tool bar, all menu buttons-->
+  <section class="container">
+    <div id="toolbar">
+      <label for="paper.io">
+        <button class="button dropdown">
+          stroke
+          <div class="dropdown-content">
+            width
+            <input id="lineWidth" name="lineWidth" value="1" />
+            opacity
+            <input id="opacity" name="opacity" value="1" />
+            color
+            <input id="stroke" name="stroke" type="color" />
+          </div>
+        </button>
+        <button id="clear" class="button">Clear</button>
+        <button id="export-pdf" class="button dropdown">
+          Export As
+          <div class="dropdown-content">
+            <a id="png">png</a>
+            <a id="jpeg">jpeg</a>
+          </div>
+        </button>
+        <button class="button dropdown">
+          change paper
+          <div class="dropdown-content">
+            <a id="squares">squares</a>
+            <a id="squares2">squares2</a>
+            <a id="v-lined">lines</a>
+            <a id="h-lined">lines2</a>
+            <a id="doted">dots</a>
+            <a id="blank">blank</a>
+            <a id="old">old</a>
+          </div>
+        </button>
+        <button class="record-btn button icon-c" href="home.html">
+          Back to Home
+        </button>
+      </label>
+    </div>
+  </section>
+
+  <!--drag & drop image-->
+  <div class="wrapper">
+    <img id="imgPrime" src="" />
+  </div>
+</main>
+<script src="white.js"></script>

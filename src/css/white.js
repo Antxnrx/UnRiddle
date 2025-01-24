@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById("drawing-board");
 const toolbar = document.getElementById("toolbar");
 const ctx = canvas.getContext("2d");
@@ -14,10 +13,6 @@ let lineWidth = 1;
 let opacity = 1;
 let startX;
 let startY;
-
-function touchMoved() {
-  return false;
-}
 
 const draw = (e) => {
   if (!isPainting) {
@@ -49,8 +44,6 @@ canvas.addEventListener("mousemove", draw);
 function onMouseDown(prevent) {
   prevent.preventDefault();
 }
-
-//---------------------------
 
 toolbar.addEventListener("click", (e) => {
   if (e.target.id === "clear") {
@@ -154,43 +147,6 @@ function blank() {
   element.id = " ";
 }
 
-let btn = document.querySelector(".record-btn");
-
-btn.addEventListener("click", async function () {
-  let stream = await navigator.mediaDevices.getDisplayMedia({
-    video: true
-  });
-
-  const mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9")
-    ? "video/webm; codecs=vp9"
-    : "video/webm";
-  let red = document.getElementById("recording");
-  red.style.display = "block";
-  let mediaRecorder = new MediaRecorder(stream, {
-    mimeType: mime
-  });
-
-  let chunks = [];
-  mediaRecorder.addEventListener("dataavailable", function (e) {
-    chunks.push(e.data);
-  });
-
-  mediaRecorder.addEventListener("stop", function () {
-    let red = document.getElementById("recording");
-    red.style.display = "none";
-    let blob = new Blob(chunks, {
-      type: chunks[0].type
-    });
-    let url = URL.createObjectURL(blob);
-
-    let video = document.querySelector("video");
-    video.src = url;
-
-    let a = document.createElement("a");
-    a.href = url;
-    a.download = "video.mp4";
-    a.click();
-  });
-
-  mediaRecorder.start();
+document.querySelector(".record-btn").addEventListener("click", () => {
+  window.location.href = "home.html"; // Redirect to home.html
 });

@@ -5,6 +5,10 @@
 
 #io{
     padding: 0 50px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 body{
@@ -12,12 +16,10 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
     width: 100%;
-    
-    height: 100vh; 
-
+    height: 100vh;
     margin: 0;
+    overflow: hidden; /* Prevent scrolling */
 }
 
 .navbar{
@@ -31,104 +33,15 @@ body{
     width: 300px;
 }
 
-.lead-bod{
-    width: 500px;
-    
-    border-radius: 25px;
-    background-color: blue;
-    display: flex;
-    align-items: center;
-    padding:  40px 50px;
-    justify-content: space-between;
-}
-.star-2{
-    width: 18px;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.star-1{
-    padding: 5px;
-    background-color: white;
-    border-radius: 50%;
-}
-
-.points{
-    display: flex;
-    align-items: center;
-    background: grey;
-    height: 40px;
-    padding: 0 20px;
-    justify-content: space-between;
-    border-radius: 18px;
-    width: 15%;
-}
-.num{
-    font-size: 20px;
-    color: white;
-    margin-left: 10px;
-
-}
-
-.picture{
-    padding: 14px;
-    background-color: white;
-    border-radius: 50%;
-}
-.pfp-1{
-    width: 40px;
-}
-
-.pfp{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 40%;
-}
-
-.name-1{
-    font-size: 20px;
-    color: white;
-    margin-left: 10px;
-}
-
-.quote{
+.quotes{
     font-size: 40px;
     color: white;
     margin-top: 20px;
     width: 800px;
-   
     padding: 30px;
     border-radius: 25px;
     background-color: red;
-}
-
-.options-1 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 10px; 
-    max-width: 220px; 
-   
-
-}
-
-.option-1 {
-    height: 200px; 
-    width: 300px; 
-    border-radius: 10px; 
-    background-color: #ddd; 
-    margin: 50px;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 2px solid palegreen;
-}
-
-.pencil-1{
-    width: 400px;
-    transform: scaleX(-1);
-    
+    text-align: center;
 }
 
 .pencil{
@@ -136,16 +49,37 @@ body{
     right: 10%;
 }
 
+.pencil-1{
+    width: 400px;
+    transform: scaleX(-1);
+}
+
+.options-1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 220px;
+}
+
+.option-1 {
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: #ddd;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid palegreen;
+}
+
 .inner-1{
     font-size: 20px;
     padding: 20px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: yellow;
     background: rgb(236, 84, 84);
     text-decoration: none;
     border-radius: 10px;
-}
-.a1{
-    text-decoration: none;
-    
 }
