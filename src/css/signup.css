@@ -30,6 +30,8 @@ body{
 }
 
 #login-main{
+    border-radius: 25px;
+    border: 1.5px solid rgba(128, 128, 128, 0.493);
     position: relative;
     width: 460px;
     height: 100%;
@@ -187,4 +189,18 @@ input{
 
   .dob{
     margin-bottom: 50px;
+  }
+
+  .btn-signup{
+    font-size: 20px;
+    color: white;
+    background-color: red;
+    font-family: font2;
+    border: none;
+
+  }
+
+  .pinn{
+    width: 100px;
+    margin-top: 20px;
   }

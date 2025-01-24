@@ -135,3 +135,17 @@ body{
     position: absolute;
     right: 10%;
 }
+
+.inner-1{
+    font-size: 20px;
+    padding: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: yellow;
+    background: rgb(236, 84, 84);
+    text-decoration: none;
+    border-radius: 10px;
+}
+.a1{
+    text-decoration: none;
+    
+}
