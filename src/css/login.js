@@ -33,8 +33,8 @@ loginBtn.addEventListener('click', (e) => {
         alert("Login successful!");
         console.log(userCredential.user);
 
-        // Redirect to another page (optional)
-        window.location.href = "dashboard.html"; // Change this to your target page
+        // Redirect to home page after successful login
+        window.location.href = "home.html"; // Redirect to home.html
       })
       .catch((error) => {
         // Handle errors
