@@ -18,6 +18,26 @@
     padding: 5em 3em;
     border-radius: 0.5em;
   }
+
+  #home-btn {
+    font-size: 1.2em;
+    font-weight: 500;
+    background-color: #ffffff;
+    color: #23234c;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.8em 1.8em;
+    border-radius: 0.3em;
+    position: fixed; /* Keeps the button fixed on the screen */
+    top: 1em; /* Position from the top */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%);
+    z-index: 10; /* Ensures it stays above other elements */
+  }
+
+  
+
   .container h3 {
     font-size: 1.2em;
     color: #23234c;
@@ -93,6 +113,7 @@
     width: 100%;
     top: 0;
   }
+  
   #start-btn {
     font-size: 1.2em;
     font-weight: 500;
