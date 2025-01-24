@@ -156,5 +156,18 @@
         .homeiie{
             position: absolute;
             right: 10%;
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(27, 27, 129);
+            border-radius: 10px;
+        }
+
+        .homeeeee{
+            font-size: 40px;
+            padding: 10px;
+            background: rgb(45, 45, 150);
+            border-radius: 5px;
+            color: white;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
         
