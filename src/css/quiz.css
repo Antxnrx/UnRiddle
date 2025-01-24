@@ -50,14 +50,14 @@
             transition: width 0.3s ease-in-out;
         }
 
-        .question {
+        #question {
             font-size: 1.2rem;
             margin: 60px;
             height: 100px;
            
         }
 
-        .options {
+        #options {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
@@ -150,5 +150,11 @@
         }
         .starrr{
             width: 40px;
+        }
+
+
+        .homeiie{
+            position: absolute;
+            right: 10%;
         }
         
