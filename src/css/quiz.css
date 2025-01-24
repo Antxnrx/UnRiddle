@@ -1,0 +1,154 @@
+@font-face {
+    font-family: font;
+    src: url('./fonts/Magic\ Bubble.ttf');
+}
+
+@font-face {
+    font-family: font2;
+    src: url('./fonts/Baby\ Bloom\ -\ Personal\ Use.otf');
+}
+        
+        
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .quiz-container {
+            max-width: 60%;
+            margin: 50px ;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            width: 40%;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 40px;
+            background: repeating-linear-gradient(
+                45deg,
+                #c776c3,
+                #c776ac 20px,
+                #e4a8e4 20px,
+                #e4a8d7 40px
+            );
+            width: 0%;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin: 60px;
+            height: 100px;
+           
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+
+        }
+
+        .option {
+            padding: 30px 40px;
+            background-color: #f0f0f0;
+            display: flex;
+            border: 1px solid #ccc;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .option:hover {
+            background-color: #dce775;
+        }
+
+
+        .next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #76c7c0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .next-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+
+        .progress{
+            display: flex;
+            justify-content: flex-end;
+            gap: 50px;
+        }
+
+
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: gold;
+            border-radius: 50%;
+            box-shadow: 0 0 10px gold;
+            animation: float 1s ease-in-out forwards;
+        }
+        
+        @keyframes float {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+        }
+        
+
+        .title{
+            font-size: 2.2rem;
+            color:goldenrod;
+            font-family: font2;
+        }
+
+        .roremon{
+            position: absolute;
+            right: 0;
+            margin: 30px;
+            bottom: 20%;
+        }
+
+        .progress-text{
+            font-size: 2rem;
+            margin: 5px;
+            display: flex;
+            color: rgb(228, 81, 81);
+            font-family: font;
+            justify-content: center;
+        }
+        .starrr{
+            width: 40px;
+        }
+        
