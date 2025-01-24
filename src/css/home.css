@@ -3,6 +3,21 @@
     margin: 0;
 }
 
+@font-face {
+    font-family: medi;
+    src: url(./fonts/MadimiOne-Regular.ttf);
+}
+
+
+a{
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: fontt;
+    src: url(./fonts/HealingBestieDemoRegular.ttf);
+}
+
 #io{
     padding: 0 50px;
     height: 100vh;
@@ -104,20 +119,27 @@ body{
     font-size: 40px;
     color: white;
     margin-top: 20px;
-    width: 800px;
+    width: 60%;
     padding: 30px;
     border-radius: 25px;
-    background-color: red;
+    background-color: rgb(248, 207, 3);
     text-align: center;
+   
+    
+}
+
+.quote-1{
+    font-family: medi;
 }
 
 .pencil{
     position: absolute;
     right: 10%;
+    bottom: 10%;
 }
 
 .pencil-1{
-    width: 400px;
+    width: 700px;
     transform: scaleX(-1);
 }
 
@@ -132,13 +154,13 @@ body{
     height: 200px; 
     width: 300px; 
     border-radius: 10px; 
-    background-color: #ddd; 
+    background-color: #5cb338; 
     margin: 50px;
     display: flex; 
     align-items: center; 
     justify-content: center; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 2px solid palegreen;
+    border: 2px solid rgb(255, 255, 0);
 }
 
 .inner-1{
@@ -146,7 +168,7 @@ body{
     padding: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: yellow;
-    background: rgb(236, 84, 84);
+    background: #5cb338;
     text-decoration: none;
     border-radius: 10px;
 }
@@ -176,4 +198,10 @@ body{
     font-weight: bold;
     text-align: center;
     margin-top: 20px;
+}
+
+.textt1{
+    font-size: 30px;
+    font-family: fontt;
+    color: #ECE852 ;
 }
