@@ -7,6 +7,13 @@
     <title>Quiz for Kids</title>
 </head>
 <body>
+    <div class="back-to-home">
+        <div class="homeiie">
+           <a href="home.html">
+            <div class="homeeeee">Back To Home?</div>
+        </a>
+        </div>
+    </div>
     <div class="roremon">
         <img src="./assets/roremon.png" alt="Doraemon">
     </div>
@@ -21,9 +28,19 @@
                 <div class="progress-bar-fill" id="progressBarFill"></div>
             </div>
         </div>
-        <div class="question" id="question">Loading question...</div>
-        <div class="options" id="options"></div>
-        <button class="next-button" id="nextButton" disabled>Next</button>
+        <div id="quizContainer">
+            <div id="progressBar">
+                <div id="progressBarFill"></div>
+            </div>
+            <div id="question">Loading question...</div>
+            <div id="options"></div>
+            <button class="next-button" id="nextButton" disabled>Next</button>
+        </div>
+        <div id="resultsContainer"></div>
+        
+            
+        </div>
+       
     </div>
 
     <script src="quiz.js"></script>

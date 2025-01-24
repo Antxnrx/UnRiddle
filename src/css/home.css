@@ -83,3 +83,33 @@ body{
     text-decoration: none;
     border-radius: 10px;
 }
+<<<<<<< HEAD
+=======
+.a1{
+    text-decoration: none;
+
+}
+
+#resultsContainer {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.resultItem {
+    margin-bottom: 20px;
+}
+
+.resultItem p {
+    margin: 5px 0;
+}
+
+.score {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+>>>>>>> 6121ea2ea3bd60d1b7eb6a9393d5fcdb3f385050
