@@ -11,6 +11,9 @@
 
 a{
     text-decoration: none;
+    height: 300px;
+    backdrop-filter: blur(0px);
+    width: 390px;
 }
 
 @font-face {
@@ -145,33 +148,65 @@ body{
 
 .options-1 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 3fr);
+    gap: 50px;
     max-width: 220px;
 }
 
 .option-1 {
-    height: 200px; 
-    width: 300px; 
+    height: 300px; 
+    width: 390px; 
     border-radius: 10px; 
-    background-color: #5cb338; 
+    background-color: #5db33849; 
     margin: 50px;
     display: flex; 
     align-items: center; 
     justify-content: center; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 2px solid rgb(255, 255, 0);
+    border: 2px solid rgb(168, 168, 168);
 }
 
 .inner-1{
     font-size: 20px;
-    padding: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: yellow;
-    background: #5cb338;
+    background: url("./assets/excited.png");
+    background-size: contain;
+    background-position: center;
     text-decoration: none;
+    background-repeat: no-repeat;
     border-radius: 10px;
+    
 }
+
+.well2{
+    background: url("./assets/confused.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
+    
+}
+
+.well3{
+    background: url("./assets/angry.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
+    
+}
+
+.well4{
+    background: url("./assets/sing.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
+    
+}
+
+
 .a1{
     text-decoration: none;
 
@@ -204,4 +239,49 @@ body{
     font-size: 30px;
     font-family: fontt;
     color: #ECE852 ;
+    height: 100%;
 }
+
+
+.ext-img{
+    width: 330px;
+    backdrop-filter: blur(px);
+}
+
+.imgg{
+    width: 310px;
+}
+.text-t{
+    font-size: 0px;
+    font-family: medi;
+    color: #d14747;
+    text-shadow: 1px 1px 2px #eb2a2a, 0 0 25px #cd101075, 0 0 5px #ff0000;
+    right: 25%;
+    font-size: 0;
+    top: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* position: absolute; */
+}
+
+
+
+ .inner-1:hover{
+    .text-t{
+        font-size: 70px;
+        /* transition: font-size 0.4s ease; */
+    }
+    
+}
+
+
+.inner-1:hover{
+    .href{
+        backdrop-filter: blur(5px);
+        transition: backdrop-filter 0.2s ease-in-out;
+    }
+}
+
+

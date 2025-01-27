@@ -6,6 +6,8 @@ const optionsContainer = document.getElementById('options');
 const nextButton = document.getElementById('nextButton');
 const resultsContainer = document.getElementById('resultsContainer');
 
+
+
 let currentQuestionIndex = 0;
 let totalScore = 0; // Initialize score variable
 const questions = [
@@ -146,3 +148,5 @@ nextButton.addEventListener('click', nextQuestion);
 // Initialize the quiz
 updateProgressBar();
 loadQuestion();
+
+
