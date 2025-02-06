@@ -1,152 +1,123 @@
+// Add Firebase imports
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAXOUMu7n597O69b4CmQPW_D5D7_n9iB8Y",
+  authDomain: "unriddle-755c3.firebaseapp.com",
+  projectId: "unriddle-755c3",
+  storageBucket: "unriddle-755c3.firebasestorage.app",
+  messagingSenderId: "345616107913",
+  appId: "1:345616107913:web:d7e3b37b64396566a07958",
+  measurementId: "G-EQNS2W6BVM"
+};
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Existing quiz variables
 const progressBarFill = document.getElementById('progressBarFill');
 const questionElement = document.getElementById('question');
 const optionsContainer = document.getElementById('options');
 const nextButton = document.getElementById('nextButton');
 const resultsContainer = document.getElementById('resultsContainer');
 
-
-
 let currentQuestionIndex = 0;
-let totalScore = 0; // Initialize score variable
-const questions = [
-    { question: "5 + 3 = ?", options: [6, 7, 8, 9], answer: 2 },
-    { question: "9 - 4 = ?", options: [4, 5, 6, 7], answer: 1 },
-    { question: "6 x 2 = ?", options: [10, 11, 12, 13], answer: 2 },
-    { question: "15 / 3 = ?", options: [3, 4, 5, 6], answer: 2 },
-    { question: "7 + 2 = ?", options: [8, 9, 10, 11], answer: 1 },
-    { question: "12 - 8 = ?", options: [3, 4, 5, 6], answer: 1 },
-    { question: "3 x 3 = ?", options: [6, 7, 8, 9], answer: 3 },
-    { question: "18 / 6 = ?", options: [2, 3, 4, 5], answer: 1 },
-    { question: "10 + 5 = ?", options: [12, 14, 15, 16], answer: 2 },
-    { question: "20 - 7 = ?", options: [12, 13, 14, 15], answer: 1 },
-    { question: "4 x 5 = ?", options: [15, 20, 25, 30], answer: 1 },
-    { question: "30 / 5 = ?", options: [5, 6, 7, 8], answer: 0 },
-    { question: "8 + 6 = ?", options: [12, 13, 14, 15], answer: 2 },
-    { question: "14 - 9 = ?", options: [4, 5, 6, 7], answer: 1 },
-    { question: "5 x 4 = ?", options: [18, 19, 20, 21], answer: 2 },
-    { question: "25 / 5 = ?", options: [3, 4, 5, 6], answer: 2 },
-    { question: "11 + 3 = ?", options: [13, 14, 15, 16], answer: 1 },
-    { question: "10 - 6 = ?", options: [3, 4, 5, 6], answer: 1 },
-    { question: "7 x 2 = ?", options: [12, 13, 14, 15], answer: 2 },
-    { question: "16 / 4 = ?", options: [3, 4, 5, 6], answer: 1 },
-];
+let totalScore = 0;
+const questions = [ /* Keep your existing questions array */ ];
 const totalQuestions = questions.length;
-
-// Track user's selected answers
 let userAnswers = [];
 
-function updateProgressBar() {
-    const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
-    progressBarFill.style.width = progress + '%';
+// Add points display element
+const pointsDisplay = document.createElement('div');
+pointsDisplay.className = 'points-display';
+document.querySelector('.progress').appendChild(pointsDisplay);
+
+async function updateUserPoints(points) {
+  try {
+    const user = auth.currentUser;
+    if (user) {
+      const userDocRef = doc(db, "users", user.uid);
+      await updateDoc(userDocRef, {
+        points: increment(points)
+      });
+      console.log("Points updated successfully!");
+    }
+  } catch (error) {
+    console.error("Error updating points:", error);
+  }
 }
 
-function loadQuestion() {
-    // Ensure there are questions to load
-    if (currentQuestionIndex >= totalQuestions) {
-        showResults();
-        return;
-    }
+async function showResults() {
+  questionElement.textContent = 'Quiz Completed!';
+  optionsContainer.innerHTML = '';
+  nextButton.style.display = 'none';
+  
+  // Update Firestore with earned points
+  await updateUserPoints(totalScore);
 
-    // Load current question
-    const currentQuestion = questions[currentQuestionIndex];
-    questionElement.textContent = currentQuestion.question;
-    optionsContainer.innerHTML = ''; // Clear previous options
-    nextButton.disabled = true; // Disable the "Next" button initially
+  // Show results
+  resultsContainer.innerHTML = `
+    <h3>Your Results:</h3>
+    <div class="final-score">
+      <span>🎉 Total Score:</span>
+      <span class="score-number">${totalScore}</span>
+    </div>
+    <button onclick="location.reload()" class="retry-button">Try Again</button>
+  `;
 
-    // Populate options
-    currentQuestion.options.forEach((option, index) => {
-        const button = document.createElement('div');
-        button.className = 'option';
-        button.textContent = option;
+  // Add celebration effect
+  for(let i = 0; i < 50; i++) {
+    setTimeout(createStar, i * 50);
+  }
+}
 
-        button.onclick = () => {
-            // Disable all options to prevent multiple selections
-            Array.from(optionsContainer.children).forEach(option => {
-                option.style.pointerEvents = 'none';
-            });
+// Modified option click handler
+button.onclick = async () => {
+  Array.from(optionsContainer.children).forEach(option => {
+    option.style.pointerEvents = 'none';
+  });
 
-            // Highlight the selected option
-            if (index === currentQuestion.answer) {
-                button.style.backgroundColor = '#76c7c0'; // Green for correct
-                totalScore += 100; // Add 100 points for correct answer
-            } else {
-                button.style.backgroundColor = '#e57373'; // Red for incorrect
-            }
+  if (index === currentQuestion.answer) {
+    button.style.backgroundColor = '#76c7c0';
+    totalScore += 100;
+    // Add immediate feedback
+    button.innerHTML += ' 🎉';
+    await triggerConfetti(button);
+  } else {
+    button.style.backgroundColor = '#e57373';
+    button.innerHTML += ' ❌';
+  }
 
-            // Save user's selected answer
-            userAnswers[currentQuestionIndex] = index;
-            nextButton.disabled = false; // Enable the "Next" button
-        };
+  userAnswers[currentQuestionIndex] = index;
+  nextButton.disabled = false;
+};
 
-        optionsContainer.appendChild(button);
+// Add confetti effect
+async function triggerConfetti(element) {
+  const confettiCount = 20;
+  for(let i = 0; i < confettiCount; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    confetti.style.left = `${element.offsetLeft + element.offsetWidth/2}px`;
+    confetti.style.top = `${element.offsetTop}px`;
+    document.body.appendChild(confetti);
+    
+    // Animation
+    confetti.animate([
+      { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+      { transform: `translate(${Math.random() * 100 - 50}px, 100vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+    ], {
+      duration: 1000,
+      easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
     });
+    
+    setTimeout(() => confetti.remove(), 1000);
+  }
 }
 
-function nextQuestion() {
-    if (currentQuestionIndex < totalQuestions - 1) {
-        currentQuestionIndex++;
-        updateProgressBar();
-        loadQuestion();
-        triggerStarEffects();
-    } else {
-        showResults();
-    }
-}
-
-function triggerStarEffects() {
-    for (let i = 0; i < 10; i++) {
-        setTimeout(createStar, i * 100);
-    }
-}
-
-function createStar() {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = `${Math.random() * 100}%`;
-    star.style.top = `${Math.random() * 100}%`;
-    document.body.appendChild(star);
-
-    setTimeout(() => {
-        star.remove();
-    }, 1000);
-}
-
-function showResults() {
-    questionElement.textContent = 'Quiz Completed!';
-    optionsContainer.innerHTML = '';
-    nextButton.style.display = 'none'; // Hide the "Next" button
-    resultsContainer.innerHTML = '<h3>Your Results:</h3>';
-
-    questions.forEach((question, index) => {
-        const resultItem = document.createElement('div');
-        resultItem.className = 'resultItem';
-
-        const userAnswer = userAnswers[index] !== undefined ? question.options[userAnswers[index]] : 'No Answer';
-        const correctAnswer = question.options[question.answer];
-
-        resultItem.innerHTML = `
-            <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
-            <p>Your Answer: ${userAnswer}</p>
-            <p>Correct Answer: ${correctAnswer}</p>
-        `;
-
-        resultsContainer.appendChild(resultItem);
-    });
-
-    // Display total score
-    const scoreElement = document.createElement('div');
-    scoreElement.className = 'score';
-    scoreElement.innerHTML = `<h3>Total Score: ${totalScore}</h3>`;
-    resultsContainer.appendChild(scoreElement);
-}
-
-// Add event listener to the "Next" button
-nextButton.addEventListener('click', nextQuestion);
-
-// Initialize the quiz
-updateProgressBar();
-loadQuestion();
-
-
+// Rest of your existing functions...

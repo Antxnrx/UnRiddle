@@ -7,7 +7,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAXOUMu7n597O69b4CmQPW_D5D7_n9iB8Y",
   authDomain: "unriddle-755c3.firebaseapp.com",
   projectId: "unriddle-755c3",
-  storageBucket: "unriddle-755c3.firebasestorage.app",
+  storageBucket: "unriddle-755c3.appspot.com",  // Corrected this line
   messagingSenderId: "345616107913",
   appId: "1:345616107913:web:d7e3b37b64396566a07958",
   measurementId: "G-EQNS2W6BVM"
@@ -18,7 +18,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Login logic
-const loginBtn = document.querySelector('.btn-login'); // Login button
+const loginBtn = document.querySelector('.btn-1'); // Updated to match the HTML
 
 loginBtn.addEventListener('click', (e) => {
   e.preventDefault(); // Prevent default button behavior
@@ -56,9 +56,6 @@ loginBtn.addEventListener('click', (e) => {
     alert("Please fill out all fields!");
   }
 });
-
-
-
 
 // Forgot Password logic
 const forgotPasswordLink = document.getElementById("forgot-password-link");
