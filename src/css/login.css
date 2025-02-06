@@ -18,8 +18,13 @@
     src: url('./fonts/Baby\ Bloom\ -\ Personal\ Use.otf');
 }
 
+@font-face {
+    font-family: font4;
+    src: url('./fonts/HealingBestieDemoRegular.ttf');
+}
+
 body{
-    background: #0ba8d84f;
+    background-color :#35B7EB;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -35,13 +40,15 @@ body{
 }
 
 #login-main{
+    
     position: relative;
     border-radius: 25px;
-    border: 1.5px solid rgba(128, 128, 128, 0.473);
-    width: 460px;
-    height: 100%;
+    border: 1px solid #BFBFBF;
+    width: 530px;
+    height: 700px;
     background-color: rgb(255, 254, 254);
     display: flex;
+    box-shadow: 15px 15px  #0097b2;
     flex-direction: column;
     padding: 10px 50px 50px 50px;
     justify-content: center;
@@ -50,15 +57,15 @@ body{
 
 .login-txt{
     color: rgb(255, 0, 0);
-    font-size: 3em;
+    font-size: 0.5em;
     margin: 20px;
-    font-family: font2;
+    font-family: font3;
 }
 
 .info-txt{
     display: flex;
     flex-direction: column;
-    grid-gap: 50px;
+    grid-gap: 30px;
     margin-bottom: 40px;
 }
 
@@ -66,27 +73,46 @@ body{
     display: flex;
     flex-direction: column;
     font-size: 26px;
-    width: 390px;
+   
     font-family: font;
     color: #5CB338;
 }
 input{
     font-size: 18px;
-    width: 100%;
+    width: 500px;
     margin: 5px;
-    border: 1px solid rgb(0, 119, 255);
-    padding: 5px;
+    background-color: #ffcdcd;
+    color: bisque;
+    border-radius: 30px;
+    font-size: 25px;
+    padding: 20px 5px;
+    border: none;
+    
 
 }
+
+::placeholder{
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: 30px;
+    font-style: italic;
+    padding-left: 20px;
+}
 .login, .signup{
-    padding: 10px 20px;
-    font-size: 25px;
-    background-color: #FB4141;
+    padding: 10px;
+    font-size: 30px;
+    background-color: #ffcdcd;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 10px;
-    font-family: font2;
+    width: 200px;
+    font-style: italic;
+    font-weight: bolder;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    border-radius: 27px;
+    justify-content: center;
 }
 
  .signup:hover{
@@ -103,99 +129,49 @@ input{
     text-decoration: none;
 }
 
-.hiro{
+.logo{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    grid-gap: 90px;
-
-}
-
-.image1 {
-    position: absolute;    
-    top: 50%;            
-    left: 98%;           
-    transform: translateY(-60%); 
-    width: 100px;         
-    height: auto;         /* Maintain aspect ratio */
-}
-
-.image1 img {
-         
-    height: auto;         /* Maintain the aspect ratio */
-}
-
-.hook{
-    width: 50px;
-    height: 50px;
-    margin: 70px;
-    border-radius: 50%;
-    background-color: black;
-}
-.parent-hook{
-    display: flex;
-    align-items: center;
-    width: 460px;
-}
-
-.pinn{
-    width: 100px;
-    margin-top: 20px;
-  }
-
-
-
-  .submarine{
-    width: 100px;
-    cursor: pointer;
-    background-color: rgba(0, 0, 255, 0.315);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    border-radius: 50%;
-}
-.sub{
-    width: 70px;
+    position: absolute;
+    top: 10%;
 
     
-    cursor: pointer;
-}
-
-#www1{
-    display: flex;
-    grid-gap: 13%;
-    margin:  50px;
-    align-items: center;
-    backdrop-filter: blur(20px);
-    width: 95%;
-
-}
-
-.modal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;     
-    background: #ddd;
-    width: 65%;
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 255, 0.315);
-    justify-self: flex-start;
-    border-radius: 50px;
-    
-}
-
-
-.music{
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
 }
 
 .anton{
-    width: 300px;
-    margin-left: 50px;
+    width: 400px;
+}
+    
+
+.forget{
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    justify-content: flex-end;
+    width: 100%;
+    display: flex;
+    color: #5CB338;
+    margin-top: 20px;
+}
+
+.flexxyy{
+    position: absolute;
+    bottom: 4%;
+}
+
+.hiro{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.suit{
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+    width: 600px;
+}
+
+.suit2{
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    width: 400px;
 }
