@@ -1,6 +1,6 @@
 // Import the necessary Firebase SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";  // For Firestore
 
 // Firebase configuration
@@ -16,52 +16,85 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
 const db = getFirestore(app);  // Initialize Firestore
 
 // Sign-up logic
-const signUpBtn = document.querySelector('.btn-signup');  // Updated button class
+const signUpBtn = document.querySelector('.btn-signup');  // Sign-up button
 
 signUpBtn.addEventListener('click', (e) => {
   e.preventDefault(); // Prevent default button behavior
   
+  const username = document.getElementById("username").value; // Username
   const email = document.getElementById("email").value; // Email
   const password = document.getElementById("password").value; // Password
-  const dob = document.getElementById("dob").value; // Date of birth
-  const gender = document.getElementById("gender").value; // Gender
 
-  if (email && password && dob && gender) {
+  if (username && email && password) {
+    // Show loading state
+    signUpBtn.disabled = true;
+    signUpBtn.textContent = "Signing Up...";
+
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         // Successful sign-up
         alert("Sign-up successful!");
         console.log(userCredential.user); // Check if the user object is correct
 
-        // Save additional data (dob, gender) to Firestore
+        // Save additional data (username, email, points) to Firestore
         const userDocRef = doc(db, "users", userCredential.user.uid);  // Using UID as the document ID
         await setDoc(userDocRef, {
+          username: username,
           email: email,
-          dob: dob,
-          gender: gender,
+          points: 0, // Initialize points to 0
         });
 
-        // Check authentication state immediately after sign-up
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            console.log("User is logged in: ", user); // Log user object to debug
-            window.location.href = "dashboard.html"; // Or another page
-          } else {
-            console.log("User is not logged in");
-          }
-        });
-
+        // Redirect to another page after sign-up
+        window.location.href = "dashboard.html"; // Or another page
       })
       .catch((error) => {
         // Handle errors
-        alert(`Error: ${error.message}`);
+        let errorMessage = "Sign-up failed. Please try again.";
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            errorMessage = "This email is already in use.";
+            break;
+          case "auth/invalid-email":
+            errorMessage = "The email address is invalid.";
+            break;
+          case "auth/weak-password":
+            errorMessage = "The password is too weak.";
+            break;
+        }
+        alert(errorMessage);
+        console.error(error); // Log the full error for debugging
+      })
+      .finally(() => {
+        // Reset button state
+        signUpBtn.disabled = false;
+        signUpBtn.textContent = "Sign Up";
       });
 
   } else {
     alert("Please fill out all fields!");
+  }
+});
+
+// Forgot Password logic
+const forgotPasswordLink = document.getElementById("forgot-password-link");
+
+forgotPasswordLink.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent default link behavior
+
+  const email = prompt("Please enter your email address:"); // Prompt user for email
+  if (email) {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("Password reset email sent! Check your inbox.");
+      })
+      .catch((error) => {
+        alert(`Error: ${error.message}`);
+      });
+  } else {
+    alert("Please enter a valid email address.");
   }
 });
