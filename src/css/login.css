@@ -8,13 +8,18 @@
     src: url('./fonts/Magic\ Bubble.ttf');
 }
 
+@font-face{
+    font-family: font3;
+    src: url('./fonts/Aquaphonic-Damp.otf');
+}
+
 @font-face {
     font-family: font2;
     src: url('./fonts/Baby\ Bloom\ -\ Personal\ Use.otf');
 }
 
 body{
-    background-image: url('./assets/BG-Hackathon\ final.png');
+    background: #0ba8d84f;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -22,6 +27,7 @@ body{
     justify-content: center;
     display: flex;               /* Enables Grid Layout */
     place-items: center; 
+    flex-direction: column;
     align-items: center;
     height: 100vh; 
 
@@ -107,17 +113,12 @@ input{
 
 }
 
-/* .image1{
-    position: absolute;
-
-} */
-
 .image1 {
-    position: absolute;    /* Absolute positioning within the parent container */
-    top: 50%;             /* Center the image vertically relative to #login-main */
-    left: 98%;           /* Position the image exactly outside the right edge */
-    transform: translateY(-60%); /* Adjust for perfect vertical centering */
-    width: 100px;         /* Set a width for the image container */
+    position: absolute;    
+    top: 50%;            
+    left: 98%;           
+    transform: translateY(-60%); 
+    width: 100px;         
     height: auto;         /* Maintain aspect ratio */
 }
 
@@ -143,3 +144,58 @@ input{
     width: 100px;
     margin-top: 20px;
   }
+
+
+
+  .submarine{
+    width: 100px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.315);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border-radius: 50%;
+}
+.sub{
+    width: 70px;
+
+    
+    cursor: pointer;
+}
+
+#www1{
+    display: flex;
+    grid-gap: 13%;
+    margin:  50px;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    width: 95%;
+
+}
+
+.modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;     
+    background: #ddd;
+    width: 65%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 255, 0.315);
+    justify-self: flex-start;
+    border-radius: 50px;
+    
+}
+
+
+.music{
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.anton{
+    width: 300px;
+    margin-left: 50px;
+}
