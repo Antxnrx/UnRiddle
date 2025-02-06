@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="..\css\login.css">
 </head>
 <body>
@@ -11,7 +11,6 @@
         <img class="logo-1" src="./assets/logo (1).png" alt="logo">
     </div>
     <main>
-        
         <div id="login-main">
             <div class="pin">
                 <img class="pinn" src="./assets/pin.png">
@@ -21,39 +20,32 @@
             </div>
             <div class="login-txt">
                 <h1 class="main-txt">LOGIN</h1>
-                
             </div>
             <div class="info-txt">
-            <div class="username">
-                <label class="label-1" for="username">Username</label>
-                <input type="email" id="email" placeholder="Enter your email">
+                <div class="email">
+                    <label class="label-1" for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="password">
+                    <label class="label-2" for="password">Password</label>
+                    <input type="password" id="password" placeholder="Password">
+                </div>
             </div>
-            <div class="password">
-                <label class="label-2" for="username">Password</label>
-                <input type="password" id="password" placeholder="Password">
-            </div>
-
-            </div>
-            
             <div class="hiro">
                 <div class="login">
-                    <div class="btn-1">Login</div>
+                    <button class="btn-login">Login</button> <!-- Updated to button -->
+                </div>
+                <div class="forgot-password">
+                    <a href="#" id="forgot-password-link">Forgot Password?</a> <!-- Added Forgot Password link -->
                 </div>
                 <div class="sign-up">
                     <div class="btn-2"><a class="signup" href="signup.html">Sign Up</a></div>
                 </div>
             </div>
-        
         </div>
     </main>
 
-
-
-
-
-
     <!-- Firebase -->
-
-        <script type="module" src="login.js"></script>
-    </body>
+    <script type="module" src="login.js"></script>
+</body>
 </html>

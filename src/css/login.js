@@ -1,6 +1,6 @@
 // Import Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -15,15 +15,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
 
 // Login logic
-const loginBtn = document.querySelector('.btn-1'); // Login button
+const loginBtn = document.querySelector('.btn-login'); // Login button
 
 loginBtn.addEventListener('click', (e) => {
   e.preventDefault(); // Prevent default button behavior
 
-  const email = document.getElementById("email").value; // Username
+  const email = document.getElementById("email").value; // Email
   const password = document.getElementById("password").value; // Password
 
   if (email && password) {
@@ -38,9 +38,41 @@ loginBtn.addEventListener('click', (e) => {
       })
       .catch((error) => {
         // Handle errors
-        alert(`Error: ${error.message}`);
+        let errorMessage = "Login failed. Please try again.";
+        switch (error.code) {
+          case "auth/user-not-found":
+            errorMessage = "No user found with this email.";
+            break;
+          case "auth/wrong-password":
+            errorMessage = "Incorrect password.";
+            break;
+          case "auth/too-many-requests":
+            errorMessage = "Too many failed attempts. Please try again later.";
+            break;
+        }
+        alert(errorMessage);
       });
   } else {
     alert("Please fill out all fields!");
+  }
+});
+
+// Forgot Password logic
+const forgotPasswordLink = document.getElementById("forgot-password-link");
+
+forgotPasswordLink.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent default link behavior
+
+  const email = prompt("Please enter your email address:"); // Prompt user for email
+  if (email) {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("Password reset email sent! Check your inbox.");
+      })
+      .catch((error) => {
+        alert(`Error: ${error.message}`);
+      });
+  } else {
+    alert("Please enter a valid email address.");
   }
 });

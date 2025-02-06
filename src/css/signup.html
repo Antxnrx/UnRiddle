@@ -8,7 +8,6 @@
 </head>
 <body>
     <main>
-        
         <div id="login-main">
             <div class="pin">
                 <img class="pinn" src="./assets/pin.png">
@@ -21,6 +20,10 @@
             </div>
             <div class="info-txt">
                 <div class="username">
+                    <label class="label" for="username">Username</label>
+                    <input type="text" id="username" placeholder="Choose a username">
+                </div>
+                <div class="email">
                     <label class="label" for="email">Email</label>
                     <input type="email" id="email" placeholder="Type valid email...">
                 </div>
@@ -28,26 +31,10 @@
                     <label class="label" for="password">Password</label>
                     <input type="password" id="password" placeholder="Password">
                 </div>
-                <div class="date-of-gen">
-                    <div class="dob">
-                        <label class="label" for="dob">Date-of-Birth</label>
-                        <input type="date" id="dob">
-                    </div>
-                    <div class="gender-container">
-                        <label class="label" for="gender">Gender</label>
-                        <select id="gender" name="gender">
-                          <option value="" disabled selected>Select your gender</option>
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
-                          <option value="nonbinary">Non-binary</option>
-                          <option value="prefer-not-say">Prefer not to say</option>
-                        </select>
-                      </div>
-                </div>
             </div>
             <div class="hiro">
                 <div class="login">
-                    <button class="btn-signup">Sign Up</button> <!-- Updated button -->
+                    <button class="btn-signup">Sign Up</button>
                 </div>
                 <div class="sign-up">
                     <div class="btn-2"><a class="signup" href="login.html">Login</a></div>
@@ -56,7 +43,7 @@
         </div>
     </main>
 
-      <!-- Link to your external signup.js -->
-      <script type="module" src="signup.js"></script>
+    <!-- Link to your external signup.js -->
+    <script type="module" src="signup.js"></script>
 </body>
 </html>
