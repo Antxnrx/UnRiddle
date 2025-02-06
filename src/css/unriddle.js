@@ -30,43 +30,51 @@ const bubbles = document.querySelectorAll("#bubble");
 
 
 
-        const fishImages = [
-            'https://pics.clipartpng.com/Blue_Fish_PNG_Clip_Art-3019.png',
-            'https://www.freeiconspng.com/uploads/orange-fish-png-image-8.png'
-        ];
-
-        function createFish() {
-            const fish = document.createElement('img');
-            fish.style.position = 'absolute';
-            fish.style.zIndex = -1;
-            fish.style.width = '100px';
-            fish.src = fishImages[Math.floor(Math.random() * fishImages.length)];
-            fish.classList.add('fish');
-            document.body.appendChild(fish);
-
-            let fromLeft = Math.random() < 0.5;
-            let startX = fromLeft ? -100 : window.innerWidth + 100;
-            let endX = fromLeft ? window.innerWidth + 100 : -100;
-            let startY = Math.random() * window.innerHeight;
+      
             
-            fish.style.top = `${startY}px`;
-            fish.style.left = `${startX}px`;
-            fish.style.transform = fromLeft ? 'scaleX(1)' : 'scaleX(-1)';
+        
 
-            let duration = Math.random() * 5 + 5;
-
-            fish.animate([
-                { transform: `translate(${startX}px, 0)` },
-                { transform: `translate(${endX}px, 0)` }
-            ], {
-                duration: duration * 1000,
-                iterations: 1
-            }).onfinish = () => {
-                fish.remove();
+            const fishImages = [
+                'https://pics.clipartpng.com/Blue_Fish_PNG_Clip_Art-3019.png',
+            'https://www.freeiconspng.com/uploads/orange-fish-png-image-8.png'
+            ];
+    
+            function createFish() {
+                const fish = document.createElement('img');
+                fish.src = fishImages[Math.floor(Math.random() * fishImages.length)];
+                fish.classList.add('fish');
+                document.body.appendChild(fish);
+    
+                let fromLeft = Math.random() < 0.5;
+                let startX = fromLeft ? -100 : window.innerWidth + 100;
+                let endX = fromLeft ? window.innerWidth + 100 : -100;
+                let startY = Math.random() * window.innerHeight;
+                
+                fish.style.top = `${startY}px`;
+                fish.style.left = `${startX}px`;
+                fish.style.transform = fromLeft ? 'scaleX(1)' : 'scaleX(-1)';
+                fish.style.width = '100px' ;
+                fish.style.position = 'absolute';
+                fish.style.zIndex = '-1';
+    
+                let duration = Math.random() * 5 + 5;
+    
+                let animation = fish.animate([
+                    { transform: `translate(${startX}px, 0)` },
+                    { transform: `translate(${endX}px, 0)` }
+                ], {
+                    duration: duration * 1000,
+                    iterations: 1
+                });
+    
+                animation.onfinish = () => {
+                    if (fish.getBoundingClientRect().right < 0 || fish.getBoundingClientRect().left > window.innerWidth) {
+                        fish.remove();
+                    }
+                    createFish();
+                };
+            }
+    
+            for (let i = 0; i < 10; i++) {
                 createFish();
-            };
-        }
-
-        for (let i = 0; i < 10; i++) {
-            createFish();
-        }
+            }

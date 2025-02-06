@@ -14,6 +14,7 @@ body {
     padding: 10px 20px;
     background: #ddd;
     width: 95%;
+    backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 255, 0.315);
     justify-self: center;
     border-radius: 50px;
@@ -155,4 +156,10 @@ footer {
     60% { transform: translate(20px, 15px) rotate(2deg); }
     80% { transform: translate(-20px, -15px) rotate(-2deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+
+.bpFabContaine:hover{
+    transform: scale(1.1);
+
 }
