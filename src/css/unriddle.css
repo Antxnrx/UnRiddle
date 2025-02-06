@@ -11,14 +11,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 20px;     
     background: #ddd;
-    width: 95%;
+    width: 65%;
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 255, 0.315);
-    justify-self: center;
+    justify-self: flex-start;
     border-radius: 50px;
-    margin-top: 50px;
+    
 }
 .logo {
     font-size: 24px;
@@ -201,4 +201,29 @@ footer {
     width: 80px;
     height: 80px;
     cursor: pointer;
+}
+.submarine{
+    width: 100px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.315);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border-radius: 50%;
+}
+.sub{
+    width: 70px;
+
+    
+    cursor: pointer;
+}
+
+#www1{
+    display: flex;
+    grid-gap: 13%;
+    margin:  50px;
+    align-items: center;
+    backdrop-filter: blur(20px);
+
 }

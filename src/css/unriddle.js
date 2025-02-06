@@ -6,7 +6,7 @@ const bubbles = document.querySelectorAll("#bubble");
                     let smallBubble = document.createElement("div");
                     smallBubble.classList.add("small-bubble");
 
-                    // Ensure parent has position: relative for absolute positioning to work
+                   
                     bubble.style.position = "relative";
 
                     // Random positions within the parent bubble
@@ -37,7 +37,8 @@ const bubbles = document.querySelectorAll("#bubble");
             const fishImages = [
                 'https://pics.clipartpng.com/Blue_Fish_PNG_Clip_Art-3019.png',
             'https://www.freeiconspng.com/uploads/orange-fish-png-image-8.png',
-            'https://pngimg.com/uploads/seahorse/small/seahorse_PNG15.png'
+            'https://pngimg.com/uploads/seahorse/small/seahorse_PNG15.png',
+            'https://www.freeiconspng.com/uploads/bubbles-png-11.png'
             ];
     
             function createFish() {
@@ -82,20 +83,39 @@ const bubbles = document.querySelectorAll("#bubble");
 
 
 
-            const audio = document.getElementById("audio");
-            const playPauseBtn = document.getElementById("playPauseBtn");
+            
+            
+            // const audio = document.getElementById("audio");
+            // const playPauseBtn = document.getElementById("playPauseBtn");
     
-            function togglePlayPause() {
-                if (audio.paused || audio.ended) {
-                    audio.play();
-                    playPauseBtn.src = "https://cdn-icons-png.flaticon.com/512/4181/4181135.png"; // Show pause button
-                } else {
-                    audio.pause();
-                    playPauseBtn.src = "https://cdn-icons-png.flaticon.com/512/2611/2611312.png"; // Show play button
-                }
-            }
+         
+            // window.addEventListener("load", () => {
+            //     audio.play().then(() => {
+            //         playPauseBtn.src = "https://cdn-icons-png.flaticon.com/512/4181/4181135.png"; 
+            //     }).catch(error => {
+            //         console.log("Autoplay blocked. User interaction required.");
+            //         playPauseBtn.src = "https://cdn-icons-png.flaticon.com/512/2611/2611312.png"; 
+            //     });
+            // });
     
-            // Optional: Change button back to play when the music ends
-            audio.addEventListener("ended", () => {
-                playPauseBtn.src = "play-icon.png";
-            });
+            // function togglePlayPause() {
+            //     if (audio.paused || audio.ended) {
+            //         audio.play();
+            //         playPauseBtn.src = "https://cdn-icons-png.flaticon.com/512/4181/4181135.png";
+            //     } else {
+            //         audio.pause();
+            //         playPauseBtn.src = "https://cdn-icons-png.flaticon.com/512/2611/2611312.png"; // Show play button
+            //     }
+            // }
+    
+            // // Prevent earphone media controls from affecting the player
+            // document.addEventListener("keydown", function (event) {
+            //     if (event.key === "MediaPlayPause" || event.key === "MediaTrackNext" || event.key === "MediaTrackPrevious") {
+            //         event.preventDefault();
+            //     }
+            // });
+    
+            // // Reset button to play when music ends
+            // audio.addEventListener("ended", () => {
+            //     playPauseBtn.src = "https://cdn-icons-png.flaticon.com/512/2611/2611312.png";
+            // });
