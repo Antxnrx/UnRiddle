@@ -34,7 +34,7 @@ loginBtn.addEventListener('click', (e) => {
         console.log(userCredential.user);
 
         // Redirect to home page after successful login
-        window.location.href = "home.html"; // Redirect to home.html
+        window.location.href = "riddle.html"; // Redirect to home.html
       })
       .catch((error) => {
         // Handle errors

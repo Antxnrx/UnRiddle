@@ -1,9 +1,9 @@
-// Add Firebase imports
+// Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
-// Initialize Firebase
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAXOUMu7n597O69b4CmQPW_D5D7_n9iB8Y",
   authDomain: "unriddle-755c3.firebaseapp.com",
@@ -14,28 +14,42 @@ const firebaseConfig = {
   measurementId: "G-EQNS2W6BVM"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Existing quiz variables
+console.log("Firebase initialized successfully!");
+
+// Quiz elements
 const progressBarFill = document.getElementById('progressBarFill');
 const questionElement = document.getElementById('question');
 const optionsContainer = document.getElementById('options');
 const nextButton = document.getElementById('nextButton');
 const resultsContainer = document.getElementById('resultsContainer');
 
+// Quiz variables
 let currentQuestionIndex = 0;
 let totalScore = 0;
-const questions = [ /* Keep your existing questions array */ ];
+const questions = [
+  { question: "5 + 3 = ?", options: [6, 7, 8, 9], answer: 2 },
+  { question: "9 - 4 = ?", options: [4, 5, 6, 7], answer: 1 },
+  { question: "6 x 2 = ?", options: [10, 11, 12, 13], answer: 2 },
+  { question: "15 / 3 = ?", options: [3, 4, 5, 6], answer: 2 },
+  { question: "7 + 2 = ?", options: [8, 9, 10, 11], answer: 1 },
+];
 const totalQuestions = questions.length;
 let userAnswers = [];
 
-// Add points display element
-const pointsDisplay = document.createElement('div');
-pointsDisplay.className = 'points-display';
-document.querySelector('.progress').appendChild(pointsDisplay);
+// Initialize quiz
+function initializeQuiz() {
+  console.log("Quiz initialized!");
+  updateProgressBar();
+  loadQuestion();
+  setupEventListeners();
+}
 
+// Update Firestore with earned points
 async function updateUserPoints(points) {
   try {
     const user = auth.currentUser;
@@ -44,80 +58,113 @@ async function updateUserPoints(points) {
       await updateDoc(userDocRef, {
         points: increment(points)
       });
-      console.log("Points updated successfully!");
+      console.log("Points updated in Firestore!");
     }
   } catch (error) {
     console.error("Error updating points:", error);
+    alert("Error saving points. Please check your connection!");
   }
 }
 
-async function showResults() {
-  questionElement.textContent = 'Quiz Completed!';
+// Quiz progress functions
+function updateProgressBar() {
+  const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+  progressBarFill.style.width = `${progress}%`;
+}
+
+function loadQuestion() {
+  if (currentQuestionIndex >= totalQuestions) {
+    showResults();
+    return;
+  }
+
+  const currentQuestion = questions[currentQuestionIndex];
+  questionElement.textContent = currentQuestion.question;
   optionsContainer.innerHTML = '';
-  nextButton.style.display = 'none';
-  
-  // Update Firestore with earned points
-  await updateUserPoints(totalScore);
+  nextButton.disabled = true;
 
-  // Show results
-  resultsContainer.innerHTML = `
-    <h3>Your Results:</h3>
-    <div class="final-score">
-      <span>🎉 Total Score:</span>
-      <span class="score-number">${totalScore}</span>
-    </div>
-    <button onclick="location.reload()" class="retry-button">Try Again</button>
-  `;
+  currentQuestion.options.forEach((option, index) => {
+    const button = document.createElement('div');
+    button.className = 'option';
+    button.textContent = option;
 
-  // Add celebration effect
-  for(let i = 0; i < 50; i++) {
+    button.onclick = () => {
+      Array.from(optionsContainer.children).forEach(opt => {
+        opt.style.pointerEvents = 'none';
+      });
+
+      if (index === currentQuestion.answer) {
+        button.style.backgroundColor = '#76c7c0';
+        totalScore += 100;
+      } else {
+        button.style.backgroundColor = '#e57373';
+      }
+
+      userAnswers[currentQuestionIndex] = index;
+      nextButton.disabled = false;
+    };
+
+    optionsContainer.appendChild(button);
+  });
+}
+
+// Results handling
+async function showResults() {
+  try {
+    await updateUserPoints(totalScore);
+    
+    questionElement.textContent = 'Quiz Completed! 🎉';
+    optionsContainer.innerHTML = '';
+    nextButton.style.display = 'none';
+    
+    resultsContainer.innerHTML = `
+      <div class="results-box">
+        <h2>Your Score: <span class="final-score">${totalScore}</span> points!</h2>
+        <button class="retry-button" onclick="location.reload()">Try Again</button>
+      </div>
+    `;
+
+    triggerCelebration();
+  } catch (error) {
+    console.error("Error showing results:", error);
+  }
+}
+
+// Celebration animation
+function triggerCelebration() {
+  for (let i = 0; i < 50; i++) {
     setTimeout(createStar, i * 50);
   }
 }
 
-// Modified option click handler
-button.onclick = async () => {
-  Array.from(optionsContainer.children).forEach(option => {
-    option.style.pointerEvents = 'none';
-  });
-
-  if (index === currentQuestion.answer) {
-    button.style.backgroundColor = '#76c7c0';
-    totalScore += 100;
-    // Add immediate feedback
-    button.innerHTML += ' 🎉';
-    await triggerConfetti(button);
-  } else {
-    button.style.backgroundColor = '#e57373';
-    button.innerHTML += ' ❌';
-  }
-
-  userAnswers[currentQuestionIndex] = index;
-  nextButton.disabled = false;
-};
-
-// Add confetti effect
-async function triggerConfetti(element) {
-  const confettiCount = 20;
-  for(let i = 0; i < confettiCount; i++) {
-    const confetti = document.createElement('div');
-    confetti.className = 'confetti';
-    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    confetti.style.left = `${element.offsetLeft + element.offsetWidth/2}px`;
-    confetti.style.top = `${element.offsetTop}px`;
-    document.body.appendChild(confetti);
-    
-    // Animation
-    confetti.animate([
-      { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
-      { transform: `translate(${Math.random() * 100 - 50}px, 100vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
-    ], {
-      duration: 1000,
-      easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-    });
-    
-    setTimeout(() => confetti.remove(), 1000);
-  }
+function createStar() {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = `${Math.random() * 100}%`;
+  star.style.top = `${Math.random() * 100}%`;
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 1000);
 }
 
-// Rest of your existing functions...
+// Event listeners
+function setupEventListeners() {
+  nextButton.addEventListener('click', () => {
+    if (currentQuestionIndex < totalQuestions - 1) {
+      currentQuestionIndex++;
+      updateProgressBar();
+      loadQuestion();
+    } else {
+      showResults();
+    }
+  });
+}
+
+// Start the quiz
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    initializeQuiz();
+  } catch (error) {
+    console.error("Initialization error:", error);
+    questionElement.textContent = "Error initializing quiz. Please refresh!";
+  }
+});

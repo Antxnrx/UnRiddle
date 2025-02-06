@@ -7,168 +7,187 @@
     font-family: font2;
     src: url('./fonts/Baby\ Bloom\ -\ Personal\ Use.otf');
 }
-        
-        
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
 
-        .quiz-container {
-            max-width: 60%;
-            margin: 50px ;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
 
-        .progress-bar {
-            width: 40%;
-            background-color: #e0e0e0;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            display: flex;
-            
-            position: relative;
-        }
+.quiz-container {
+    max-width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-        .progress-bar-fill {
-            height: 40px;
-            background: repeating-linear-gradient(
-                45deg,
-                #c776c3,
-                #c776ac 20px,
-                #e4a8e4 20px,
-                #e4a8d7 40px
-            );
-            width: 0%;
-            transition: width 0.3s ease-in-out;
-        }
+.progress-bar {
+    width: 40%;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex;
+    position: relative;
+}
 
-        #question {
-            font-size: 1.2rem;
-            margin: 60px;
-            height: 100px;
-           
-        }
+.progress-bar-fill {
+    height: 40px;
+    background: repeating-linear-gradient(
+        45deg,
+        #c776c3,
+        #c776ac 20px,
+        #e4a8e4 20px,
+        #e4a8d7 40px
+    );
+    width: 0%;
+    transition: width 0.3s ease-in-out;
+}
 
-        #options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+#question {
+    font-size: 1.2rem;
+    margin: 60px;
+    height: 100px;
+}
 
-        }
+#options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
 
-        .option {
-            padding: 30px 40px;
-            background-color: #f0f0f0;
-            display: flex;
-            border: 1px solid #ccc;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
+.option {
+    padding: 30px 40px;
+    background-color: #f0f0f0;
+    display: flex;
+    border: 1px solid #ccc;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
 
-        .option:hover {
-            background-color: #dce775;
-        }
+.option:hover {
+    background-color: #dce775;
+}
 
+.next-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #76c7c0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        .next-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            background-color: #76c7c0;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+.next-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
 
-        .next-button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
+.progress {
+    display: flex;
+    justify-content: flex-end;
+    gap: 50px;
+}
 
+.star {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: gold;
+    border-radius: 50%;
+    box-shadow: 0 0 10px gold;
+    animation: float 1s ease-in-out forwards;
+}
 
-        .progress{
-            display: flex;
-            justify-content: flex-end;
-            gap: 50px;
-        }
+@keyframes float {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
 
+.title {
+    font-size: 2.2rem;
+    color: goldenrod;
+    font-family: font2;
+}
 
-        .star {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: gold;
-            border-radius: 50%;
-            box-shadow: 0 0 10px gold;
-            animation: float 1s ease-in-out forwards;
-        }
-        
-        @keyframes float {
-            0% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px);
-            }
-        }
-        
+.roremon {
+    position: absolute;
+    right: 0;
+    margin: 30px;
+    bottom: 20%;
+}
 
-        .title{
-            font-size: 2.2rem;
-            color:goldenrod;
-            font-family: font2;
-        }
+.progress-text {
+    font-size: 2rem;
+    margin: 5px;
+    display: flex;
+    color: rgb(228, 81, 81);
+    font-family: font;
+    justify-content: center;
+}
 
-        .roremon{
-            position: absolute;
-            right: 0;
-            margin: 30px;
-            bottom: 20%;
-        }
+.starrr {
+    width: 40px;
+}
 
-        .progress-text{
-            font-size: 2rem;
-            margin: 5px;
-            display: flex;
-            color: rgb(228, 81, 81);
-            font-family: font;
-            justify-content: center;
-        }
-        .starrr{
-            width: 40px;
-        }
+.homeiie {
+    position: absolute;
+    right: 10%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(27, 27, 129);
+    border-radius: 10px;
+}
 
+.homeeeee {
+    font-size: 40px;
+    padding: 10px;
+    background: rgb(45, 45, 150);
+    border-radius: 5px;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
-        .homeiie{
-            position: absolute;
-            right: 10%;
-            display: flex;
-            flex-direction: row;
-            background-color: rgb(27, 27, 129);
-            border-radius: 10px;
-        }
+/* Results Styling */
+#resultsContainer {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #2e7d32;
+}
 
-        .homeeeee{
-            font-size: 40px;
-            padding: 10px;
-            background: rgb(45, 45, 150);
-            border-radius: 5px;
-            color: white;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-        
-        
+.final-score {
+    font-size: 2rem;
+    color: #c2185b;
+    font-weight: bold;
+}
+
+.retry-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #7b1fa2;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.retry-button:hover {
+    transform: scale(1.05);
+    background-color: #9c27b0;
+}

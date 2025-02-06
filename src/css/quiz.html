@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="quiz.css">
     <title>Quiz for Kids</title>
+    <link rel="stylesheet" href="quiz.css">
 </head>
 <body>
     <div class="logo">
@@ -32,20 +32,14 @@
             </div>
         </div>
         <div id="quizContainer">
-            <div id="progressBar">
-                <div id="progressBarFill"></div>
-            </div>
             <div id="question">Loading question...</div>
             <div id="options"></div>
             <button class="next-button" id="nextButton" disabled>Next</button>
         </div>
         <div id="resultsContainer"></div>
-        
-            
-        </div>
-       
     </div>
 
-    <script src="quiz.js"></script>
+    <!-- Firebase and Quiz Script -->
+    <script type="module" src="quiz.js"></script>
 </body>
 </html>
