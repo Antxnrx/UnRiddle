@@ -163,3 +163,42 @@ footer {
     transform: scale(1.1);
 
 }
+
+
+.w1, .w2, .w3, .w4{
+  width: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+    
+}
+
+.w1{
+    
+    top: 70%;
+    left: 5%;
+}
+
+.w2{
+    z-index: -1;
+    
+    top: 80%;
+    left: 30%;
+}
+.w3{
+    
+    top: 85%;
+    left: 60%;
+}
+
+.w4{
+    
+    top: 70%;
+    left: 95%;
+}
+.music{
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}

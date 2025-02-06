@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="unriddle.css">
 </head>
 <body>
-    <div class="modal">
-        <div class="logo"><img src="./assets/anton.png" class="anton" alt="Santa"></div>
-        <div class="user-info">
-            <input type="text" placeholder="xxxxx">
-            <input type="text" placeholder="XXXXXXXXXX">
-            <button>🔵</button>
-            <button class="login">Login/sign-up</button>
+    <section>
+        <div class="modal">
+            <div class="logo"><img src="./assets/anton.png" class="anton" alt="Santa"></div>
+            <div class="music">
+                <img class="music" id="playPauseBtn" src="https://cdn-icons-png.flaticon.com/512/2611/2611312.png" alt="Play" width="50" height="50" onclick="togglePlayPause()">
+            </div>
+            
         </div>
-    </div>
+    </section>
     <main>
         <div class="astro"><img class="float" src="./assets/astro.png"></div>
         <div class="bodyy">
@@ -63,6 +63,15 @@
             </div>
         </div>
     </main>
+
+    
+        <img class="w1" src="./assets/giphy.gif">
+        <img class="w2" src="./assets/giphy.gif">
+        <img class="w3" src="./assets/giphy.gif">
+        <img class="w4" src="./assets/giphy.gif">
+    
+
+        <audio id="audio" src="./assets/courage.m4a"></audio>
     
    
     <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>

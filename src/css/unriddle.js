@@ -36,7 +36,8 @@ const bubbles = document.querySelectorAll("#bubble");
 
             const fishImages = [
                 'https://pics.clipartpng.com/Blue_Fish_PNG_Clip_Art-3019.png',
-            'https://www.freeiconspng.com/uploads/orange-fish-png-image-8.png'
+            'https://www.freeiconspng.com/uploads/orange-fish-png-image-8.png',
+            'https://pngimg.com/uploads/seahorse/small/seahorse_PNG15.png'
             ];
     
             function createFish() {
@@ -78,3 +79,23 @@ const bubbles = document.querySelectorAll("#bubble");
             for (let i = 0; i < 10; i++) {
                 createFish();
             }
+
+
+
+            const audio = document.getElementById("audio");
+            const playPauseBtn = document.getElementById("playPauseBtn");
+    
+            function togglePlayPause() {
+                if (audio.paused || audio.ended) {
+                    audio.play();
+                    playPauseBtn.src = "https://cdn-icons-png.flaticon.com/512/4181/4181135.png"; // Show pause button
+                } else {
+                    audio.pause();
+                    playPauseBtn.src = "https://cdn-icons-png.flaticon.com/512/2611/2611312.png"; // Show play button
+                }
+            }
+    
+            // Optional: Change button back to play when the music ends
+            audio.addEventListener("ended", () => {
+                playPauseBtn.src = "play-icon.png";
+            });
