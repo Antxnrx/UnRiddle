@@ -68,7 +68,9 @@ body{
     grid-gap: 30px;
     margin-bottom: 40px;
 }
-
+.btn-2{
+    padding-right:0px;
+}
 .username, .password{
     display: flex;
     flex-direction: column;
@@ -81,23 +83,22 @@ input{
     font-size: 18px;
     width: 500px;
     margin: 5px;
+    font-weight: 600;
     background-color: #ffcdcd;
-    color: bisque;
+    color: rgb(255, 255, 255);
     border-radius: 30px;
     font-size: 25px;
-    padding: 20px 5px;
+    padding: 20px 40px;
     border: none;
-    
-
-}
-
-::placeholder{
+  }
+  
+  ::placeholder{
     color: #ffffff;
     font-weight: bolder;
     font-size: 30px;
     font-style: italic;
-    padding-left: 20px;
-}
+    /* padding-left: 20px; */
+  }
 .login, .signup{
     padding: 10px;
     font-size: 30px;
@@ -106,6 +107,7 @@ input{
     border: none;
     cursor: pointer;
     border-radius: 10px;
+    padding-right: 30px;
     width: 200px;
     font-style: italic;
     font-weight: bolder;
@@ -160,7 +162,9 @@ input{
 .hiro{
     display: flex;
     justify-content: flex-end;
+    grid-gap: 100px;
 }
+
 
 .suit{
     position: absolute;
@@ -175,3 +179,45 @@ input{
     top: 10%;
     width: 400px;
 }
+
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffcdcd;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeInOut 3s ease-in-out;
+  }
+  
+  .custom-alert.success {
+    background-color: #5cb85c;
+  }
+  
+  .custom-alert.error {
+    background-color: #d9534f;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  }
+  
+  .btn-signup{
+    font-size: 28px;
+    padding: 2px;
+    color: white;
+    background-color: #ffcdcd;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: none;
+    font-weight: bolder;
+  }

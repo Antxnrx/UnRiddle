@@ -68,11 +68,12 @@ input{
   font-size: 18px;
   width: 500px;
   margin: 5px;
+  font-weight: 600;
   background-color: #ffcdcd;
-  color: bisque;
+  color: rgb(255, 255, 255);
   border-radius: 30px;
   font-size: 25px;
-  padding: 20px 5px;
+  padding: 20px 40px;
   border: none;
 }
 
@@ -81,7 +82,7 @@ input{
   font-weight: bolder;
   font-size: 30px;
   font-style: italic;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 
 

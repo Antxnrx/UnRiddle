@@ -1,14 +1,14 @@
-// Import the necessary Firebase SDKs
+// Import Firebase SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";  // For Firestore
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";  
 
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAXOUMu7n597O69b4CmQPW_D5D7_n9iB8Y",
   authDomain: "unriddle-755c3.firebaseapp.com",
   projectId: "unriddle-755c3",
-  storageBucket: "unriddle-755c3.firebasestorage.app",
+  storageBucket: "unriddle-755c3.firebaseapp.com",
   messagingSenderId: "345616107913",
   appId: "1:345616107913:web:d7e3b37b64396566a07958",
   measurementId: "G-EQNS2W6BVM"
@@ -19,63 +19,68 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-console.log("Firebase initialized successfully!");
+// Function to show custom alert popup
+function showAlert(message, type) {
+  let alertBox = document.createElement("div");
+  alertBox.className = `custom-alert ${type}`;
+  alertBox.textContent = message;
+
+  document.body.appendChild(alertBox);
+
+  setTimeout(() => {
+    alertBox.remove();
+  }, 3000);
+}
 
 // Sign-up logic
-const signUpBtn = document.getElementById('signUpBtn');  // Use the correct ID
+const signUpBtn = document.getElementById('signUpBtn');
 
 signUpBtn.addEventListener('click', async (e) => {
-  e.preventDefault(); // Prevent default button behavior
+  e.preventDefault();
 
-  const username = document.getElementById("username").value; // Username
-  const email = document.getElementById("email").value; // Email
-  const password = document.getElementById("password").value; // Password
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
   if (username && email && password) {
-    // Show loading state
     signUpBtn.disabled = true;
     signUpBtn.textContent = "Signing Up...";
 
     try {
-      // Create user with email and password
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Save additional data (username, email, points) to Firestore
-      const userDocRef = doc(db, "users", user.uid);  // Using UID as the document ID
-      await setDoc(userDocRef, {
+      await setDoc(doc(db, "users", user.uid), {
         username: username,
         email: email,
-        points: 0, // Initialize points to 0
+        points: 0
       });
 
-      alert("Sign-up successful!");
-      console.log("User created and data saved to Firestore:", user);
+      showAlert("Sign-up successful! Redirecting to login...", "success");
+      console.log("User created:", user);
 
-      // Redirect to another page after sign-up
-      window.location.href = "dashboard.html"; // Or another page
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 2000); // Redirect after 2 seconds
     } catch (error) {
-      // Handle errors
       let errorMessage = "Sign-up failed. Please try again.";
       switch (error.code) {
         case "auth/email-already-in-use":
           errorMessage = "This email is already in use.";
           break;
         case "auth/invalid-email":
-          errorMessage = "The email address is invalid.";
+          errorMessage = "Invalid email format.";
           break;
         case "auth/weak-password":
-          errorMessage = "The password is too weak.";
+          errorMessage = "Password must be at least 6 characters.";
           break;
       }
-      alert(errorMessage);
-      console.error("Error during sign-up:", error);
+      showAlert(errorMessage, "error");
     } finally {
-      // Reset button state
       signUpBtn.disabled = false;
       signUpBtn.textContent = "Sign Up";
     }
   } else {
-    alert("Please fill out all fields!");
+    showAlert("Please fill out all fields!", "error");
   }
 });

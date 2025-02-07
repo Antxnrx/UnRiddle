@@ -7,7 +7,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAXOUMu7n597O69b4CmQPW_D5D7_n9iB8Y",
   authDomain: "unriddle-755c3.firebaseapp.com",
   projectId: "unriddle-755c3",
-  storageBucket: "unriddle-755c3.appspot.com",  // Corrected this line
+  storageBucket: "unriddle-755c3.appspot.com",
   messagingSenderId: "345616107913",
   appId: "1:345616107913:web:d7e3b37b64396566a07958",
   measurementId: "G-EQNS2W6BVM"
@@ -17,27 +17,40 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+// Function to show custom alert popup
+function showAlert(message, type) {
+  let alertBox = document.createElement("div");
+  alertBox.className = `custom-alert ${type}`;
+  alertBox.textContent = message;
+
+  document.body.appendChild(alertBox);
+
+  // Remove after 3 seconds
+  setTimeout(() => {
+    alertBox.remove();
+  }, 3000);
+}
+
 // Login logic
-const loginBtn = document.querySelector('.btn-1'); // Updated to match the HTML
+const loginBtn = document.querySelector('.btn-1');
 
 loginBtn.addEventListener('click', (e) => {
-  e.preventDefault(); // Prevent default button behavior
+  e.preventDefault();
 
-  const email = document.getElementById("email").value; // Email
-  const password = document.getElementById("password").value; // Password
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
   if (email && password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Successful login
-        alert("Login successful!");
+        showAlert("Login successful!", "success");
         console.log(userCredential.user);
 
-        // Redirect to home page after successful login
-        window.location.href = "riddle.html"; // Redirect to home.html
+        setTimeout(() => {
+          window.location.href = "riddle.html"; // Redirect to home page
+        }, 1500);
       })
       .catch((error) => {
-        // Handle errors
         let errorMessage = "Login failed. Please try again.";
         switch (error.code) {
           case "auth/user-not-found":
@@ -50,10 +63,10 @@ loginBtn.addEventListener('click', (e) => {
             errorMessage = "Too many failed attempts. Please try again later.";
             break;
         }
-        alert(errorMessage);
+        showAlert(errorMessage, "error");
       });
   } else {
-    alert("Please fill out all fields!");
+    showAlert("Please fill out all fields!", "error");
   }
 });
 
@@ -61,18 +74,18 @@ loginBtn.addEventListener('click', (e) => {
 const forgotPasswordLink = document.getElementById("forgot-password-link");
 
 forgotPasswordLink.addEventListener('click', (e) => {
-  e.preventDefault(); // Prevent default link behavior
+  e.preventDefault();
 
-  const email = prompt("Please enter your email address:"); // Prompt user for email
+  const email = prompt("Please enter your email address:");
   if (email) {
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        alert("Password reset email sent! Check your inbox.");
+        showAlert("Password reset email sent! Check your inbox.", "success");
       })
       .catch((error) => {
-        alert(`Error: ${error.message}`);
+        showAlert(`Error: ${error.message}`, "error");
       });
   } else {
-    alert("Please enter a valid email address.");
+    showAlert("Please enter a valid email address.", "error");
   }
 });
